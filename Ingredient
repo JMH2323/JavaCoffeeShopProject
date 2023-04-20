@@ -1,8 +1,12 @@
 public class Ingredient {
     
+    
+
+
 
     // Create variables included in ingredients
     
+    private String name;
     private double cost;
     private String status;
     private int limit;
@@ -15,19 +19,26 @@ public class Ingredient {
 
     // Construct the class using the cost needed, stock limit, current amount, and setting the status to full
     
-    public void Ingredient(double c, int l, int a){
-
+    public void newIngredient(String n, double c, int l, int a){
+        
+        this.name = n;
         this.cost = c;
         this.status = "Full";
         this.limit = l;
         this.amount = a;
-
     }
 
 
 
     
     // Create a way to access each of these variables
+
+    public String getName(){
+        return this.name;
+    }   
+    
+    
+    
     public String getStatus(){
         return this.status;
 
