@@ -1,0 +1,31 @@
+public class Member {
+    
+    int phoneN;
+    int points;
+    boolean isEmployee;
+    
+
+
+    public int getNumber(){
+        return phoneN;
+    }
+
+    public int getPoints(){
+        return points;
+
+    }
+
+    public boolean checkEmployee(){
+        return isEmployee;
+
+    }
+
+    public void newMember(int pn, boolean e){
+
+        this.points = 0;
+        this.phoneN = pn;
+        this.isEmployee = e;
+
+    }
+
+}
