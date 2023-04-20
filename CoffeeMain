@@ -1,11 +1,17 @@
+import java.util.ArrayList;
 
 public class CoffeeMain {
-    
-
-public static void main(String[] args) {
+    public static void main(String[] args) {
         
+        CoffeeGUI gui = new CoffeeGUI();
 
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+
+        // DEMO add some ingredients to the list
+        Ingredient milk = new Ingredient();
+        milk.newIngredient("milk", 5.00, 10, 10);
+        ingredients.add(milk);
         
-
+        gui.ingredientStatus(ingredients);
     }
 }
