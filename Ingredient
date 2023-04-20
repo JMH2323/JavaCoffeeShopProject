@@ -1,0 +1,130 @@
+public class Ingredient {
+    
+
+    // Create variables included in ingredients
+    
+    private double cost;
+    private String status;
+    private int limit;
+    private int amount;
+
+    //Create a Gui Class
+
+    CoffeeGUI gui = new CoffeeGUI();
+
+
+    // Construct the class using the cost needed, stock limit, current amount, and setting the status to full
+    
+    public void Ingredient(double c, int l, int a){
+
+        this.cost = c;
+        this.status = "Full";
+        this.limit = l;
+        this.amount = a;
+
+    }
+
+
+
+    
+    // Create a way to access each of these variables
+    public String getStatus(){
+        return this.status;
+
+    }
+
+    public double getCost(){
+        return this.cost;
+
+    }
+
+    public int getLimit(){
+        return this.limit;
+
+    }
+
+    public int getAmount(){
+        return this.amount;
+
+    }
+
+    // Create ways to change variables
+
+    public void setLimit(int newLimit){
+        if (this.amount > newLimit) {
+            System.out.println("Current stock is higher than limit being set.");
+            System.out.println("Please decrease current stock before setting new limit");
+        }
+        else {
+            this.limit = newLimit;
+
+        }
+
+
+    }
+
+
+    // Create depletion tree for ingredient stock status
+
+    public void use(int amountUsed){
+
+        if (amountUsed > this.amount){
+            System.out.print("Not enough ingredients");
+            return;
+        }
+        
+        this.amount -= amountUsed;
+
+
+        if(this.amount == 0) {
+            this.deplete();
+        } else if (this.amount == (this.limit/4)){
+            this.deplete();
+        } else if (this.amount == (this.limit/2)){
+            this.deplete();
+        }
+
+    }
+
+    
+    // Depletion method used for above depletion tree
+
+    private void deplete(){
+
+        if (this.status.equals("Full")) {
+            this.status = "Half Stock";
+        } 
+        if (this.status.equals("Half Stock")) {
+            this.status = "Low";
+        }
+        if (this.status.equals("Low")) {
+            this.status = "Empty";
+        }
+
+    }
+
+
+    public void replenish(){
+
+        double price = ((this.limit - this.amount) * this.cost);
+
+        System.out.println("Total cost for replenish to " + this.limit + " quantity is $" + price);
+        System.out.println("Would you like to continue with the purchase?");
+        System.out.println("1. Yes");
+        System.out.println("2. No");
+
+        int select = gui.select(2);
+        
+        switch(select){
+            case 1:
+            this.amount = this.limit;
+            break;
+            case 2:
+            break;
+
+        }
+
+    }
+
+
+}
