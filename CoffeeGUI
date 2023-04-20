@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class CoffeeGUI {
     
     Scanner kbScanner = new Scanner(System.in);
+    
+    int select;
 
 
     // Create a method for selecting choices from a Menu
@@ -22,8 +24,93 @@ public class CoffeeGUI {
         return selection;
     }
 
+
+    // Create Start and selecting options
+
+
+        public void start(){
+
+            System.out.println("Welcome to CoffeeGUI. Please make a selection below");
+            System.out.println("1. Place an order");
+            System.out.println("2. Access loyalty and members");
+            System.out.println("3. Change and Update Menu");
+            System.out.println("4. Check and Update BOH");
+
+            select = this.select(4);
+
+            switch(select){
+                case 1:
+                this.placeOrder();
+                break;
+
+                case 2:
+                this.accessLoyalty();
+                break;
+
+                case 3:
+                this.changeMenu();
+                break;
+
+                case 4:
+                this.checkBOH();
+                break;
+            }
+
+        }
+
+        private void placeOrder() {
+
+        }
+
+        private void accessLoyalty() {
+            System.out.println("1. Add member");
+            2
+            3
+
+          select = this.select(3)
+
+            switch(select){
+                case 1: 
+                this.addmember();
+                break; 
+            }
+        
+            private void addmember(){
+
+                memner sne 
+
+                Systme. are 
+                member.newmember()
+            }
+
+
+
+        }
+
+        private void changeMenu(){
+
+        }
+
+        private void checkBOH(){
+
+            System.
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     // print out the current status of each ingredient
 
+    
     public void ingredientStatus(ArrayList<Ingredient> ingredients){
         for (Ingredient i : ingredients) {
             System.out.println("Ingredient: " + i.getName());
