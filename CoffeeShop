@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+
+public class CoffeeShop {
+    
+    ArrayList<Ingredient> ingredients = new ArrayList<>();
+
+        
+    
+    public void populateIngredients(){
+       
+        // Adding Milk
+        Ingredient WholeMilkOz = new Ingredient("Whole milk ounces", .03, 10);
+        ingredients.add(WholeMilkOz);
+
+         Ingredient ReducedMilkOz = new Ingredient("Reduced milk ounces", .03, 1280);
+        ingredients.add(ReducedMilkOz);
+
+        Ingredient AlmondMilkOz = new Ingredient("Almond milk ounces", .03, 1280);
+        ingredients.add(AlmondMilkOz);
+
+        Ingredient OatMilkOz = new Ingredient("Oat milk ounces", .03, 1280);
+        ingredients.add(OatMilkOz);
+
+        Ingredient SoyMilkOz = new Ingredient("Soy milk ounces", .03, 1280);
+        ingredients.add(SoyMilkOz);
+
+        //Add 
+
+        
+        
+
+    }
+
+
+
+}
