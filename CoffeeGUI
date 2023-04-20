@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class CoffeeGUI {
+    
+    Scanner kbScanner = new Scanner(System.in);
+
+
+    // Create a method for selecting choices from a Menu
+    public int select(int num) {
+        int selection;
+    
+        do {
+            selection = kbScanner.nextInt();
+    
+            if (selection > num || selection < 1) {
+                System.out.println("Invalid selection. Please select again choosing a number corresponding to the choices");
+            }
+    
+        } while (selection > num || selection < 1);
+    
+        return selection;
+    }
+
+
+
+
+}
