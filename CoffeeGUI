@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CoffeeGUI {
@@ -21,7 +22,17 @@ public class CoffeeGUI {
         return selection;
     }
 
+    // print out the current status of each ingredient
 
+    public void ingredientStatus(ArrayList<Ingredient> ingredients){
+        for (Ingredient i : ingredients) {
+            System.out.println("Ingredient: " + i.getName());
+            System.out.println("Status: " + i.getStatus());
+            System.out.println("Cost: $" + i.getCost());
+            System.out.println("Limit: " + i.getLimit());
+            System.out.println("Amount: " + i.getAmount());
+         }
+    }
 
 
 }
