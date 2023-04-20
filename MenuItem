@@ -1,6 +1,51 @@
-public class MenuItem{
 
+public class MenuItem {
 
-    
-
+		//initialize variables
+	
+		protected String name;
+		private double price;
+		private boolean onCurrentMenue;
+		
+		//Generate getters and setters
+		
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		public double getPrice() {
+			return price;
+		}
+		public void setPrice(double price) {
+			this.price = price;
+		}
+		public boolean isOnCurrentMenue() {
+			return onCurrentMenue;
+		}
+		public void setOnCurrentMenue(boolean onCurrentMenue) {
+			this.onCurrentMenue = onCurrentMenue;
+		}
+		
+		//Generate other methods
+		
+		public void purchaseItem() {
+			//add the price to the order
+			
+			
+			//decrease the ingredient amount
+			
+			
+			//add to loyalty points
+			
+		}
+		
+		public void removeItem() {
+			//undo purchaseItem
+		}
+		
+		public void cancelPurchase() {
+			
+		}
 }
