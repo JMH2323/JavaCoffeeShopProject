@@ -19,12 +19,12 @@ public class Ingredient {
 
     // Construct the class using the cost needed, stock limit, current amount, and setting the status to full
     
-    public void newIngredient(String n, double c, int l, int a){
+    public Ingredient(String n, double c, int a){
         
         this.name = n;
         this.cost = c;
         this.status = "Full";
-        this.limit = l;
+        this.limit = a;
         this.amount = a;
     }
 
@@ -89,6 +89,8 @@ public class Ingredient {
 
         if(this.amount == 0) {
             this.deplete();
+        } else if (this.amount == this.limit-1){
+            this.deplete();
         } else if (this.amount == (this.limit/4)){
             this.deplete();
         } else if (this.amount == (this.limit/2)){
@@ -103,12 +105,15 @@ public class Ingredient {
     private void deplete(){
 
         if (this.status.equals("Full")) {
-            this.status = "Half Stock";
+            this.status = "High Stock";
         } 
-        if (this.status.equals("Half Stock")) {
-            this.status = "Low";
+        else if(this.status.equals("High Stock")){
+            this.status = "Half Stock";
         }
-        if (this.status.equals("Low")) {
+        else if (this.status.equals("Half Stock")) {
+            this.status = "Low Stock";
+        }
+        else if (this.status.equals("Low Stock")) {
             this.status = "Empty";
         }
 
@@ -129,6 +134,7 @@ public class Ingredient {
         switch(select){
             case 1:
             this.amount = this.limit;
+            System.out.println("Purchase complete.");
             break;
             case 2:
             break;
