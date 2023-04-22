@@ -73,9 +73,140 @@ public class CoffeeGUI extends CoffeeShop {
 
 
         // JOHN BLAKE 
-        private void accessLoyalty() {
-                    
+       private void accessLoyalty() {
+            System.out.println("1. Add member");
+            System.out.println("2. How many loyalty points do you have?");
+            System.out.println("3. Are you a loyalty member?");
+            System.out.println("4. Does customer have a reward?");
 
+          select = this.select(4);
+
+            switch(select){
+                case 1: 
+                this.addmember();
+                break; 
+                
+                case 2:
+                this.lookupPoints();
+                break;
+                
+                case 3:
+                this.isLoyaltyMem();
+                break;
+                    	
+            	case 4:
+            	this.hasReward();
+            	break;
+            }
+        
+        }
+
+        public void addmember(){
+        	
+        	
+        	System.out.println("Enter phone number (no dashes or spaces):");
+        	String p = kbScanner.next();
+        	
+        	members.put(p,0);
+        	
+        	System.out.println("New member added!");
+        	System.out.println();
+        	
+        	this.start();
+        	
+        	
+        	
+        }
+        //new member from lookup	    	
+        public  void addmember(String p){ 	
+        	
+        	members.put(p, 0);
+        	  	
+        }
+        
+        //new member from purchase
+        public  void addmember(String p, int a){ 	
+        	
+        	members.put(p, a);
+        	  	
+        }
+
+
+
+        public  void lookupPoints(){
+        	System.out.println("Enter phone number (no dashes or spaces):");
+        	String p = kbScanner.next();
+        	
+        	if(members.containsKey(p)) {
+        		 System.out.println("This customer has" + members.get(p) +"points");
+        	} else {
+        		System.out.println("This customer is not signed up for loyalty points.");
+        		System.out.println("Would you like to join the loyalty progrmam? (Y/N)");
+        		
+        		String s = kbScanner.next();
+        		if (s.equalsIgnoreCase("Y")) {
+            		
+            		this.addmember(p,0);
+            		 
+            	} else if (kbScanner.next().equalsIgnoreCase("N")){
+            		
+            		System.out.print("Ok.");
+            		
+            		 
+            	} else {
+            		
+            		System.out.println("invalid input.");
+                	
+            	}
+
+        	}
+        	
+        	
+      
+      
+        }
+        
+        
+        public  void isLoyaltyMem() {
+        	
+        	System.out.println("Enter phone number (no dashes or spaces):");
+        	String p = kbScanner.next();
+        	
+        	if(members.containsKey(p)) {
+        		System.out.println("You are a loyalty member");
+        	} else {
+        		System.out.println("This customer is not signed up for loyalty points.");
+        		System.out.println("Would you like to join the loyalty progrmam? (Y/N)");
+        		
+        		String s = kbScanner.next();
+        		if (s.equalsIgnoreCase("Y")) {
+            		
+            		this.addmember(p,0);
+            		 
+            	} else if (kbScanner.next().equalsIgnoreCase("N")){
+            		
+            		System.out.print("Ok.");
+            	}	
+        	}
+        	
+        }
+        	
+        
+        
+        public  void hasReward() {
+        	System.out.println("Enter phone number (no dashes or spaces):");
+        	String id = kbScanner.next();
+        	
+        	if(members.get(id) >= 10) {
+        		System.out.println("You have a reward!");
+        	} else if (members.get(id) < 10) {
+        		System.out.println("You are " + (10 - members.get(id)) + " points away from a reward.");
+        	} else {
+        		System.out.println("invalid input");
+        	}
+        		
+        	
+        	
         }
 
         
