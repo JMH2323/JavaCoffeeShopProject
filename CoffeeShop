@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CoffeeShop {
     
     ArrayList<Ingredient> ingredients = new ArrayList<>();
+    HashSet<Member> memberList = new HashSet<>();
+        
 
         
     
@@ -25,8 +28,14 @@ public class CoffeeShop {
         ingredients.add(SoyMilkOz);
 
         //Add 
+    }
+
+    public void populateMembers(){
 
         
+
+
+    } 
         
 
     }
