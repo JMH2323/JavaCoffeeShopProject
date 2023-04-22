@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CoffeeGUI {
+public class CoffeeGUI extends CoffeeShop {
     
     Scanner kbScanner = new Scanner(System.in);
     
@@ -29,6 +29,8 @@ public class CoffeeGUI {
 
 
         public void start(){
+
+
 
             System.out.println("Welcome to CoffeeGUI. Please make a selection below");
             System.out.println("1. Place an order");
@@ -58,44 +60,72 @@ public class CoffeeGUI {
 
         }
 
+        //GROUP
         private void placeOrder() {
 
         }
 
-        private void accessLoyalty() {
-            System.out.println("1. Add member");
-            2
-            3
 
-          select = this.select(3)
-
-            switch(select){
-                case 1: 
-                this.addmember();
-                break; 
-            }
-        
-            private void addmember(){
-
-                memner sne 
-
-                Systme. are 
-                member.newmember()
-            }
-
-
-
-        }
-
+        //GROUP
         private void changeMenu(){
 
         }
 
-        private void checkBOH(){
 
-            System.
+        // JOHN BLAKE 
+        private void accessLoyalty() {
+                    
+
         }
 
+        
+
+        //JACK HALEY. Checking BOH
+        private void checkBOH(){
+            System.out.println("1. Update Current Inventory");
+            System.out.println("2. Monitor Day Progress");
+            System.out.println("3. Check Inventory");
+        
+            select = this.select(3);
+
+            switch(select){ 
+            case 1:
+                this.updateInv();
+            break;
+                
+            case 2:
+            this.monitor();
+            break;
+
+            case 3:
+                this.ingredientStatus(ingredients);
+            break;
+            }
+        }
+
+            // Option 1 for Checking BOH
+            public void updateInv(){
+
+                System.out.println("1. Add New Ingredient");
+                System.out.println("2. Change Current Ingredient Limit");
+                System.out.println("3. Drop Ingredient");
+
+                select = this.select(3);
+
+                switch(select){
+                    case 1:
+                    System.out.println("Please enter the following one at a time: ingredient name, cost, and limit");
+                    String newName = kbScanner.nextLine();
+                    Ingredient newIngredient = new Ingredient(newName, kbScanner.nextDouble(), kbScanner.nextInt());
+                    ingredients.add(newIngredient);
+                    break;
+
+                    case 2:
+                    System.out.println("Please enter the name of the ingredient you would like to change the limit for and the new limit");
+                    
+                }
+
+            }
 
 
 
