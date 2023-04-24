@@ -5,7 +5,8 @@ public class CoffeeMain {
         CoffeeGUI gui = new CoffeeGUI();
 
         gui.populateIngredients();
-        gui.populateMembers();        
+        gui.populateMembers();    
+        gui.populateMenu();   
         gui.start();
         
 
@@ -17,3 +18,8 @@ public class CoffeeMain {
 
     }
 }
+
+
+
+
+
