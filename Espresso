@@ -1,6 +1,27 @@
+
 public class Espresso extends MenuItem{
 
+int milkOzAmount;
+int espressoAmount;
 
+
+ public Espresso(String name, double basePrice, int milkAmount, int espressoAmount){
+
+    super(name, basePrice);
+    this.milkOzAmount = milkAmount;
+    this.espressoAmount = espressoAmount;
     
     
+
+}
+
+public int getMilk(){
+    return this.milkOzAmount;
+}
+
+public int getEspresso(){
+    return this.espressoAmount;
+}
+
+
 }
