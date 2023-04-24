@@ -72,6 +72,20 @@ public class Ingredient {
         }
         else {
             this.limit = newLimit;
+            System.out.println("Would you like to replenish this ingredient?");
+            System.out.println("1. Yes");
+            System.out.println("2. No");
+            int select = gui.select(2);
+            switch(select){
+                case 1:
+                this.replenish();
+                break;
+
+                case 2:
+                this.status = this.calculateStatus(this.getAmount());
+                break;
+
+            }
 
         }
 
