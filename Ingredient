@@ -8,7 +8,7 @@ public class Ingredient {
     
     private String name;
     private double cost;
-    private String status;
+    public String status;
     private int limit;
     private int amount;
 
@@ -49,6 +49,10 @@ public class Ingredient {
 
     }
 
+    public double getCost(int amount){
+        return this.cost * amount;
+    }
+
     public int getLimit(){
         return this.limit;
 
@@ -84,43 +88,33 @@ public class Ingredient {
             return;
         }
         
-        this.amount -= amountUsed;
+        int newAmount = this.amount - amountUsed;
+    String newStatus = calculateStatus(newAmount);
 
-
-        if(this.amount == 0) {
-            this.deplete();
-        } else if (this.amount == this.limit-1){
-            this.deplete();
-        } else if (this.amount == (this.limit/4)){
-            this.deplete();
-        } else if (this.amount == (this.limit/2)){
-            this.deplete();
-        }
-
+    if (!newStatus.equals(this.status)) {
+        this.status = newStatus;
     }
 
-    
-    // Depletion method used for above depletion tree
+    this.amount = newAmount;
+}
 
-    private void deplete(){
-
-        if (this.status.equals("Full")) {
-            this.status = "High Stock";
-        } 
-        else if(this.status.equals("High Stock")){
-            this.status = "Half Stock";
-        }
-        else if (this.status.equals("Half Stock")) {
-            this.status = "Low Stock";
-        }
-        else if (this.status.equals("Low Stock")) {
-            this.status = "Empty";
-        }
-
+private String calculateStatus(int amount) {
+    if (amount == 0) {
+        return "Empty";
+    } else if (amount <= this.limit / 4) {
+        return "Low Stock";
+    } else if (amount <= this.limit / 2) {
+        return "Half Stock";
+    } else if (amount < this.limit) {
+        return "High Stock";
+    } else {
+        return "Full";
     }
+}
 
 
-    public void replenish(){
+
+    public double replenish(){
 
         double price = ((this.limit - this.amount) * this.cost);
 
@@ -135,12 +129,18 @@ public class Ingredient {
             case 1:
             this.amount = this.limit;
             System.out.println("Purchase complete.");
-            break;
+            String newStatus = calculateStatus(this.amount);
+                if (!newStatus.equals(this.status)) {
+                this.status = newStatus;
+                }
+            return price;
+
             case 2:
-            break;
+            return 0;
+            
 
         }
-
+        return 0;
     }
 
 
