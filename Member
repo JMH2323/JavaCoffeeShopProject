@@ -1,12 +1,28 @@
 public class Member {
     
-    int phoneN;
-    int points;
+    String phoneN;
+    int points = 0;
     boolean isEmployee;
     
 
 
-    public int getNumber(){
+    
+
+    public Member(String p, Boolean emp) {
+        this.phoneN = p;
+        this.isEmployee = emp;
+        this.points = 0;
+
+    }
+
+    public Member(String string, Boolean emp, int points) {
+        this.phoneN = string;
+        this.isEmployee = emp;
+        this.points = points;
+
+    }
+
+    public String getNumber(){
         return phoneN;
     }
 
@@ -15,12 +31,20 @@ public class Member {
 
     }
 
+    public void addPoints(double price){
+
+        this.points += price/5;
+
+    }
+
+
+
     public boolean checkEmployee(){
         return isEmployee;
 
     }
 
-    public void newMember(int pn, boolean e){
+    public void newMember(String pn, boolean e){
 
         this.points = 0;
         this.phoneN = pn;
