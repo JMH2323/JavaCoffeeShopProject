@@ -1,44 +1,122 @@
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 
 public class CoffeeShop {
     
     ArrayList<Ingredient> ingredients = new ArrayList<>();
-    HashSet<Member> memberList = new HashSet<>();
+    ArrayList<MenuItem> menu = new ArrayList<>();
+    HashMap<String, Member> members = new HashMap<>();
+    double storeRevenue;
         
 
         
     
     public void populateIngredients(){
        
-        // Adding Milk
-        Ingredient WholeMilkOz = new Ingredient("Whole milk ounces", .03, 10);
+        // Adding Milk and Espresso
+        Ingredient WholeMilkOz = new Ingredient("WholeMilkOunces", .03, 1280);
         ingredients.add(WholeMilkOz);
 
-         Ingredient ReducedMilkOz = new Ingredient("Reduced milk ounces", .03, 1280);
-        ingredients.add(ReducedMilkOz);
+         Ingredient Espresso = new Ingredient("Espresso", 1.75, 800);
+        ingredients.add(Espresso);
 
-        Ingredient AlmondMilkOz = new Ingredient("Almond milk ounces", .03, 1280);
-        ingredients.add(AlmondMilkOz);
+        
 
-        Ingredient OatMilkOz = new Ingredient("Oat milk ounces", .03, 1280);
-        ingredients.add(OatMilkOz);
+        //Add ETC
 
-        Ingredient SoyMilkOz = new Ingredient("Soy milk ounces", .03, 1280);
-        ingredients.add(SoyMilkOz);
+        Ingredient Caramel = new Ingredient("Caramel", .5, 200);
+        ingredients.add(Caramel);
 
-        //Add 
+        Ingredient Mocha = new Ingredient("Mocha", .5, 200);
+        ingredients.add(Mocha);
+
+        Ingredient WhippedCream = new Ingredient("WhippedCream", .10, 800);
+        ingredients.add(WhippedCream);
+
+        Ingredient SweetCream = new Ingredient("SweetCream", 1.0, 800);
+        ingredients.add(SweetCream);
+
+        Ingredient ColdFoam = new Ingredient("ColdFoam", .75, 800);
+        ingredients.add(ColdFoam);
+
+        Ingredient Sprinkles = new Ingredient("Sprinkles", .10, 1000);
+        ingredients.add(Sprinkles);
+
+        Ingredient CookieCrumble = new Ingredient("CookieCrumble", .55, 600);
+        ingredients.add(CookieCrumble);
+
+        Ingredient CaramelCrunch = new Ingredient("CaramelCrunch", .45, 600);
+        ingredients.add(CaramelCrunch);
+
+        Ingredient CinnamonDolce = new Ingredient("CinammonDolce", .35, 600);
+        ingredients.add(CinnamonDolce);
+
+        Ingredient Sugar = new Ingredient("Sugar", 0.20, 1000);
+        ingredients.add(Sugar);
+
+        Ingredient Honey = new Ingredient("Honey", 0.20, 500);
+        ingredients.add(Honey);
+
+        Ingredient LiquidCane = new Ingredient("LiquidCane", 0.20, 1000);
+        ingredients.add(LiquidCane);
+        
+        Ingredient Artificial = new Ingredient("Artificial", 0.20, 1000);
+        ingredients.add(Artificial);
+
+        
+
     }
 
     public void populateMembers(){
 
-        
+        Member m1 = new Member("7068798527", false, 20);
+        Member m2 = new Member("1234567890", true, 10);
+        Member m3 = new Member("5551234567", false, 5);
+    
+        members.put(m1.getNumber(), m1);
+        members.put(m2.getNumber(), m2);
+        members.put(m3.getNumber(), m3);
+    }
 
 
-    } 
+    
         
+    public void populateMenu(){
+
+        Espresso espressoShot = new Espresso("Espresso shot", 2.0, 0, 1);
+        menu.add(espressoShot);
+
+        Espresso americano = new Espresso("Americano", 2.5, 0, 2);
+        menu.add(americano);
+
+        Espresso cappuccino = new Espresso("Cappuccino", 2.93, 6, 1);
+        menu.add(cappuccino);
+
+        Espresso flatWhite = new Espresso("Flat White", 2.99, 8, 1);
+        menu.add(flatWhite);
+
+        Espresso latte = new Espresso("Latte", 3.4, 15, 1);
+        menu.add(latte);
+
+        Espresso mocha = new Espresso("Mocha", 3.4, 15, 1);
+        menu.add(mocha);
+
+        Espresso macchiato = new Espresso("Macchiato", 3.95, 6, 1);
+        menu.add(macchiato);
+
+        MenuItem donut = new MenuItem("Donut", 1);
+        menu.add(donut);
+
+        MenuItem muffin = new MenuItem("Muffin", .80);
+        menu.add(muffin);
+
+        MenuItem bagel = new MenuItem("Bagel", .80);
+        menu.add(bagel);
+
 
     }
+
+    
 
 
 
