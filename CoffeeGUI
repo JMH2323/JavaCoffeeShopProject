@@ -10,6 +10,7 @@ public class CoffeeGUI extends CoffeeShop {
     int select;
 
     private ArrayList<MenuItem> order = new ArrayList<MenuItem>();
+    private ArrayList<Receipt> receipts = new ArrayList<Receipt>();
     
 
 
@@ -372,19 +373,30 @@ public class CoffeeGUI extends CoffeeShop {
                     System.out.println("Your total price is: $" + finalPrice);
                     break;
                 }
+                break;
+            }
+                
 
                 System.out.println("Thank you for coming!");
                 storeRevenue += finalPrice;
+
+                System.out.println("Receipt:");
+                System.out.println("------------------------");
+                for (MenuItem item : order) {
+                    System.out.println(item.getName() + " - $" + item.getPrice());
+                }
+                System.out.println("------------------------");
+                System.out.println("Total: $" + finalPrice);
+                System.out.println();
+
+                ArrayList<MenuItem> orderCopy = new ArrayList<>(order);
+                Receipt receipt = new Receipt(orderCopy, finalPrice);
+                receipts.add(receipt);
                 order.clear();
-
-                break;
-                
-                
-
             }
 
 
-        }
+        
 
         private double calculateTotalPrice(ArrayList<MenuItem> order) {
             double totalPrice = 0;
@@ -720,7 +732,7 @@ public class CoffeeGUI extends CoffeeShop {
         private boolean checkEmployee(String pn){
 
             Member discountMember = members.get(pn);
-            if (discountMember.isEmployee){
+            if (discountMember.checkEmployee()){
                 return true;
             }
             else {
@@ -791,7 +803,64 @@ public class CoffeeGUI extends CoffeeShop {
             }
 
             private void monitor(){
+
+                System.out.println("Would you like to:");
+                System.out.println("1. Print reciepts");
+                System.out.println("2. Check revenue and ingredients");
+
+                select = this.select(2);
+                switch(select){
+            
+                    case 1:
+                    System.out.println("1. Print all reciepts");
+                    System.out.println("2. Print a specific receipt");
+                    select = this.select(2);
+                        switch(select){
+                            case 1:
+                                this.printAllReciepts();
+                            break;
+
+                            case 2:
+                                System.out.println("What reciept number would you like to print?");
+                                select = kbScanner.nextInt()-1;
+                            
+                                if (select < 0 || select >= receipts.size()) {
+                                    System.out.println("Invalid receipt number.");
+                                } else {
+                                    Receipt receipt = receipts.get(select);
+                                    System.out.println("Receipt #" + (select + 1));
+                                    System.out.println("------------------------");
+                                    for(MenuItem item : receipt.getItems()) {
+                                        System.out.println(item.getName() + " - $" + item.getPrice());
+                                    }
+                                System.out.println("------------------------");
+                                System.out.println("Total: $" + receipt.getFinalPrice());
+                            }
+                            break;
+                        
+                        }
+                    break;
+
+
+
+                    case 2:
                 System.out.println("Current Revenue of today: $" + storeRevenue);
+                
+                boolean hasLowIngredients = false;
+
+                    for (Ingredient ingredient : ingredients) {
+                        if (ingredient.getStatus().equals("Low Stock") || ingredient.getStatus().equals("Empty")) {
+                            hasLowIngredients = true;
+                            break;
+                            }
+                    }
+                
+                if (!hasLowIngredients){
+                    System.out.println("No low Ingredients.");
+                    System.out.println();
+                }
+
+                if (hasLowIngredients) {
                 System.out.println("Currently low ingredients");
                 
                 for (Ingredient ingredient : ingredients) {
@@ -818,6 +887,9 @@ public class CoffeeGUI extends CoffeeShop {
 
                     break;
                 }
+                break;
+                }
+            }
 
             }
 
@@ -852,6 +924,30 @@ public class CoffeeGUI extends CoffeeShop {
             System.out.println("Amount: " + i.getAmount());
          }
     }
+
+    //print all receipts
+
+    public void printAllReciepts(){
+
+        System.out.println("All receipts:");
+        System.out.println("------------------------");
+
+        for (int i = 0; i < receipts.size(); i++) {
+            Receipt receipt = receipts.get(i);
+            System.out.println("Receipt #" + (i+1));
+            System.out.println("------------------------");
+            for(MenuItem item : receipt.getItems()) {
+                System.out.println(item.getName() + " - $" + item.getPrice());
+            }
+            System.out.println("------------------------");
+            System.out.println("Total: $" + receipt.getFinalPrice());
+            System.out.println();
+        }
+
+    }
+
+
+
 
 
 }
