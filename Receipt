@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+
+public class Receipt{
+
+
+    private ArrayList<MenuItem> order = new ArrayList<MenuItem>();
+    private Double finalPrice;
+
+    public Receipt(ArrayList<MenuItem> o, Double f){
+        this.order = o;
+        this.finalPrice = f;
+
+
+
+
+    }
+
+public Double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public ArrayList<MenuItem> getItems() {
+        return order;
+
+    }
+}
