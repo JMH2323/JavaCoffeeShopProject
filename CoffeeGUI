@@ -11,6 +11,7 @@ public class CoffeeGUI extends CoffeeShop {
 
     private ArrayList<MenuItem> order = new ArrayList<MenuItem>();
     private ArrayList<Receipt> receipts = new ArrayList<Receipt>();
+    private double sizePrice;
     
 
 
@@ -171,20 +172,58 @@ public class CoffeeGUI extends CoffeeShop {
     // add the selected item to the order and deduct ingredients
     if (select <= espMenu.size()) {
         Espresso item = espMenu.get(select - 1);
-        order.add(item);
-        ingredients.get(0).use(item.getMilk());
-        ingredients.get(1).use(item.getEspresso());
-        this.addExtra();
-        } else if (select == espMenu.size() + 1) {
-            this.placeOther();
-        }  
+    
+    String cupSize = chooseCup();
+    switch(cupSize) {
+        case "Small":
+            ingredients.get(0).use(item.getMilk() / 2);
+            ingredients.get(1).use(item.getEspresso() / 2);
+            sizePrice -= .5;
+            break;
+        case "Medium":
+            ingredients.get(0).use(item.getMilk());
+            ingredients.get(1).use(item.getEspresso());
+            
+            break;
+        case "Large":
+            ingredients.get(0).use((item.getMilk() * 2));
+            ingredients.get(1).use((item.getEspresso() * 2));
+            sizePrice += 1;
+            
+            break;
+        default:
+            break;
+    }
+    order.add(item);
+    this.addExtra();
+} else if (select == espMenu.size() + 1) {
+    this.placeOther();
+}
 
     }
                 
 
 
             
+        private String chooseCup(){
+            System.out.println("What cup size do you want?");
+            System.out.println("1. Small (8oz)");
+            System.out.println("2. Medium (12oz)");
+            System.out.println("3. Large (16oz)");
 
+            select = this.select(3);
+            String cupSize = cupSizes[select-1];
+            System.out.println("You chose " + cupSize + ".");
+            return cupSize;
+                
+
+
+
+            }
+
+
+
+        
         
 
 
@@ -302,7 +341,8 @@ public class CoffeeGUI extends CoffeeShop {
                     break;
 
                     case 5:
-                    MenuItem extrasItem = new MenuItem("Extras", extraPrice);
+                    extraPrice += sizePrice;
+                    MenuItem extrasItem = new MenuItem("Extras and Size", extraPrice);
                     order.add(extrasItem);
                     done = true;
                     break;
@@ -320,7 +360,7 @@ public class CoffeeGUI extends CoffeeShop {
             double finalPrice = calculateTotalPrice(order);
             System.out.println("Your order is below:");
             for (MenuItem item: order) {
-                System.out.println(item.getName()+ ": $" + item.getPrice());
+                System.out.println(item.getName()+ ": $" + (item.getPrice()));
             }
             
 
@@ -402,7 +442,9 @@ public class CoffeeGUI extends CoffeeShop {
             double totalPrice = 0;
             for (MenuItem item : order) {
                 totalPrice += item.getPrice();
+                
             }
+            
             return totalPrice;
         }
 
