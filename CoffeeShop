@@ -72,7 +72,7 @@ public class CoffeeShop {
     public void populateMembers(){
 
         Member m1 = new Member("7068798527", false, 20);
-        Member m2 = new Member("1234567890", true, 10);
+        Member m2 = new Member("6785883132", true, 1000);
         Member m3 = new Member("5551234567", false, 5);
     
         members.put(m1.getNumber(), m1);
