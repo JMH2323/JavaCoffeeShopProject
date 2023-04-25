@@ -116,29 +116,34 @@ public class CoffeeGUI extends CoffeeShop {
 
         private void placeFood(){
 
+            ArrayList<MenuItem> foodMenu = new ArrayList<>();
+
+                for (MenuItem item : menu) {
+                    if (!(item instanceof Espresso)) {
+                        foodMenu.add(item);
+                    }
+                }
+
             System.out.println("What food would you like?");
-            System.out.println("1. Donut");
-            System.out.println("2. Muffin");
-            System.out.println("3. Bagel");
-            System.out.println("4. Cancel");
-
-            select = this.select(4);
-            switch(select){
-                case 1:
-                order.add(((List<MenuItem>) menu).get(7));
-                break;
-
-                case 2:
-                order.add(((List<MenuItem>) menu).get(8));
-                break;
-
-                case 3:
-                order.add(((List<MenuItem>) menu).get(9));
-                break;
-
-                case 4:
-                break;
+            
+            for (int i = 0; i < foodMenu.size(); i++) {
+                MenuItem item = foodMenu.get(i);
+                        System.out.println((i + 1) + ". " + item.getName());
             }
+        
+            // add an option to cancel
+            
+            System.out.println((foodMenu.size() + 1) + ". Cancel");
+        
+            select = this.select(foodMenu.size() + 1);
+        
+            // add the selected item to the order and deduct ingredients
+            if (select <= foodMenu.size()) {
+                MenuItem item = foodMenu.get(select - 1);
+            
+                order.add(item);
+                
+            }            
 
         }
 
