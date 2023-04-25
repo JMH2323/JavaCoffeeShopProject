@@ -7,14 +7,14 @@ public class Member {
 
 
     
-
-    public Member(String p, Boolean emp) {
-        this.phoneN = p;
+    // Member with no points. First purchase
+    public Member(String string, Boolean emp) {
+        this.phoneN = string;
         this.isEmployee = emp;
         this.points = 0;
 
     }
-
+    // New member who just made a purchase, has gained points from purchase
     public Member(String string, Boolean emp, int points) {
         this.phoneN = string;
         this.isEmployee = emp;
