@@ -7,6 +7,7 @@ public class CoffeeShop {
     ArrayList<MenuItem> menu = new ArrayList<>();
     HashMap<String, Member> members = new HashMap<>();
     double storeRevenue;
+    String[] cupSizes = {"Small", "Medium", "Large"};
         
 
         
