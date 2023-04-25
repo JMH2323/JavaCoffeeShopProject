@@ -6,6 +6,7 @@ public class MenuItem {
     protected String name;
     private double price;
     private boolean onCurrentMenu;
+   
     
     //Generate getters and setters
     
@@ -13,6 +14,7 @@ public class MenuItem {
         this.name = name;
         this.price = basePrice; 
         onCurrentMenu = true;
+        
 
     }
 
@@ -40,24 +42,5 @@ public class MenuItem {
         }
     }
     
-    //Generate other methods
     
-    public void purchaseItem() {
-        //add the price to the order
-        
-        
-        //decrease the ingredient amount
-        
-        
-        //add to loyalty points
-        
-    }
-    
-    public void removeItem() {
-        //undo purchaseItem
-    }
-    
-    public void cancelPurchase() {
-        
-    }
 }
