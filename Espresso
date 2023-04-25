@@ -3,7 +3,8 @@ public class Espresso extends MenuItem{
 
 int milkOzAmount;
 int espressoAmount;
-
+Ingredient wholeMilkOz;
+Ingredient Espresso;
 
  public Espresso(String name, double basePrice, int milkAmount, int espressoAmount){
 
@@ -23,5 +24,12 @@ public int getEspresso(){
     return this.espressoAmount;
 }
 
+public void useMilk(int i){
+    wholeMilkOz.use(i);
+}
+
+public void useEspresso(int i){
+    Espresso.use(i);
+}
 
 }
