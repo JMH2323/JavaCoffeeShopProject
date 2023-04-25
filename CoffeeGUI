@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -124,15 +125,15 @@ public class CoffeeGUI extends CoffeeShop {
             select = this.select(4);
             switch(select){
                 case 1:
-                order.add(menu.get(7));
+                order.add(((List<MenuItem>) menu).get(7));
                 break;
 
                 case 2:
-                order.add(menu.get(8));
+                order.add(((List<MenuItem>) menu).get(8));
                 break;
 
                 case 3:
-                order.add(menu.get(9));
+                order.add(((List<MenuItem>) menu).get(9));
                 break;
 
                 case 4:
@@ -432,6 +433,7 @@ public class CoffeeGUI extends CoffeeShop {
                 ArrayList<MenuItem> orderCopy = new ArrayList<>(order);
                 Receipt receipt = new Receipt(orderCopy, finalPrice);
                 receipts.add(receipt);
+                sizePrice = 0;
                 order.clear();
             }
 
